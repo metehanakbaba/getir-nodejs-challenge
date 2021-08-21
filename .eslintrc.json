@@ -1,11 +1,15 @@
 {
   "env": {
     "commonjs": true,
-    "es2015": true,
+    "es5": true,
     "node": true
   },
   "extends": [
+    "prettier",
     "airbnb-base"
+  ],
+  "plugins": [
+    "prettier"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -15,5 +19,6 @@
     "ecmaVersion": 2015
   },
   "rules": {
+    "prettier/prettier": "error"
   }
 }
