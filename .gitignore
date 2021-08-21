@@ -1,0 +1,5 @@
+# Intellij idea gitignore
+.idea/*
+
+# Node Package Manager
+package-lock.json
