@@ -1,42 +1,22 @@
-const httpCodes = {
-  success: 200,
-  notFound: 404,
-  serverError: 500,
-  validationError: 400
-  // etc
-};
+import httpStatus from '../utils/httpStatus';
+
+const {
+  OK, BAD_REQUEST, INTERNAL_SERVER_ERROR, NOT_FOUND
+} = httpStatus;
+
 const response = (res, status, code, msg, otherFields) => {
   const jsonOutput = { code, msg, ...otherFields };
   res.status(status).json(jsonOutput);
 };
 
 export const success = (res) => (entity) => {
-  response(res, httpCodes.success, 0, 'Success', entity);
+  response(res, OK, 0, 'Success', entity);
 };
 
-// eslint-disable-next-line func-names
-export const validationErrorHandler = () => function (err, req, res, next) {
-  if (req.errorBody) {
-    const { validationError } = httpCodes;
-    const { error } = req.errorBody;
-    const { message } = { error };
-    response(
-      res,
-      validationError, // status
-      validationError, // code
-      message // message
-    );
-  }
-  else {
-    next(err);
-  }
-};
-
-// eslint-disable-next-line func-names,no-unused-vars
-export const serverErrorHandler = () => function (err, req, res, _next) {
-  const { serverError } = httpCodes;
+// eslint-disable-next-line no-unused-vars
+export const serverErrorHandler = () => (err, req, res, next) => {
   response(
-    res, serverError, serverError,
+    res, INTERNAL_SERVER_ERROR, 1,
     err.msg || err.message || 'Something went wrong',
     {
       error: err
@@ -44,10 +24,24 @@ export const serverErrorHandler = () => function (err, req, res, _next) {
   );
 };
 
-// eslint-disable-next-line func-names
-export const notFoundHandler = () => function (req, res) {
-  const { notFound } = httpCodes;
+export const notFoundHandler = () => (req, res) => {
   response(
-    res, notFound, notFound, 'Not found'
+    res, NOT_FOUND, 2, 'Not found'
   );
+};
+
+export const validationErrorHandler = () => (err, req, res, next) => {
+  if (req.errorBody) {
+    const { error } = req.errorBody;
+    const { message } = { error };
+    response(
+      res,
+      BAD_REQUEST, // status
+      3, // code
+      message // message
+    );
+  }
+  else {
+    next(err);
+  }
 };

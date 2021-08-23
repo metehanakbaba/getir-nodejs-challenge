@@ -3,13 +3,13 @@ import {
   createdAtBetween,
   projectionForTotalCount,
   totalCountBetween
-} from './model.aggregations';
-// eslint-disable-next-line import/no-cycle
+} from './record.model.aggregations';
 import { Record } from '.';
 
-const userController = {};
+const recordController = {};
 
-export const query = ({ body }, res, next) => {
+// List records
+recordController.list = async ({ body }, res, next) => {
   Record.aggregate([
     createdAtBetween({
       lowerBound: new Date(body.startDate),
@@ -23,3 +23,5 @@ export const query = ({ body }, res, next) => {
     .then(success(res))
     .catch(next);
 };
+
+export default recordController;

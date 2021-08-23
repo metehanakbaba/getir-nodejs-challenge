@@ -1,9 +1,9 @@
 import { Router } from 'express';
-// eslint-disable-next-line import/no-cycle
-import { query } from './controller';
+import recordController from './record.controller';
+import { asyncWrapper } from '../../utils/asyncWrapper';
 
-export { default as Record } from './model';
-export { schema } from './model';
+export { default as Record } from './record.model';
+export { schema } from './record.model';
 
 const Joi = require('joi').extend(require('@joi/date'));
 
@@ -23,7 +23,7 @@ const router = new Router();
 
 // routes
 // eslint-disable-next-line no-use-before-define
-router.post('/', listRecords, query);
+router.post('/', asyncWrapper(listRecords), asyncWrapper(recordController.list));
 
 function validateRequest(req, res, next, schema) {
   const options = {
