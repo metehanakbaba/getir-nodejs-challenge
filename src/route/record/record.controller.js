@@ -7,7 +7,8 @@ import {
 // eslint-disable-next-line import/no-cycle
 import { Record } from '.';
 
-// eslint-disable-next-line import/prefer-default-export
+const userController = {};
+
 export const query = ({ body }, res, next) => {
   Record.aggregate([
     createdAtBetween({

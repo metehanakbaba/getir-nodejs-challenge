@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
 import { join } from 'path';
+
+dotenv.config();
 
 const config = {
   env: process.env.NODE_ENV || 'development',
@@ -6,7 +9,7 @@ const config = {
   http: {
     ip: process.env.HTTP_SERVER_IP || '0.0.0.0',
     port: process.env.HTTP_SERVER_PORT || 9000,
-    apiRoot: process.env.HTTP_SERVER_API_ROOT || ''
+    pathApiRoot: process.env.HTTP_SERVER_API_ROOT || ''
   },
   mongo: {
     uri: process.env.DB_MONGO_URI || '',
