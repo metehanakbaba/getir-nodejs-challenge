@@ -1,11 +1,10 @@
 import { EventEmitter } from 'events';
 import mockgoose from 'mockgoose';
 import mongoose from '../src/services/mongoose';
-// eslint-disable-next-line import/named
-import { mongo } from '../src/config';
+import config from '../src/config';
 
+const { mongo } = config;
 EventEmitter.defaultMaxListeners = Infinity;
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
 global.Array = Array;
 global.Date = Date;
@@ -25,7 +24,7 @@ global.parseFloat = parseFloat;
 
 beforeAll(async () => {
   await mockgoose(mongoose);
-  mongoose.connect(mongo.uri);
+  mongoose.connect(mongo.uri, mongo.options);
 });
 
 afterAll(() => {
