@@ -3,9 +3,11 @@
     "start": "node index.js",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest",
-    "build": "babel src/app.js --out-dir build",
     "server": "cross-env DEBUG=app nodemon --exec babel-node src/app.js",
-    "dev": "cross-env NODE_ENV=development npm-run-all server"
+    "server:prod": "cross-env NODE_ENV=production nodemon --exec babel-node src/app.js",
+    "dev": "cross-env NODE_ENV=development npm-run-all server",
+    "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md",
+    "docs:post": "opn docs/index.html"
   },
   "jest": {
     "testEnvironment": "node",
@@ -20,6 +22,8 @@
     "@babel/preset-stage-1": "^7.8.3",
     "@babel/register": "^7.15.3",
     "@babel/runtime": "^7.15.3",
+    "apidoc": "^0.29.0",
+    "apidoc-markdown": "^6.0.0",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "babel-runtime": "^6.26.0",
