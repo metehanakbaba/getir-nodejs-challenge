@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint src"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
