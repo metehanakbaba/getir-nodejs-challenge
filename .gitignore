@@ -9,4 +9,4 @@ node_modules/*
 .env
 
 # Api documentation
-.docs/*
+docs/*
