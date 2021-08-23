@@ -1,11 +1,4 @@
-const express = require('express')
-const app = express()
-const port = 3000
+require('babel-core/register')
+require('dotenv').config()
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-})
+exports = module.exports = require('./src/app')
