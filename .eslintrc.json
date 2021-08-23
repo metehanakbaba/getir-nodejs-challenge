@@ -1,7 +1,9 @@
 {
   "extends": "airbnb-base",
   "env": {
-    "es6": true
+    "es6": true,
+    "jest": true,
+    "jasmine": true
   },
   "rules": {
     "brace-style": [
@@ -20,10 +22,8 @@
     ],
     "one-var": [
       "off"
-    ]
-  },
-  "env": {
-  "jest": true,
-  "jasmine": true
-}
+    ],
+    "import/prefer-default-export": "off",
+    "import/no-cycle": "off"
+  }
 }
