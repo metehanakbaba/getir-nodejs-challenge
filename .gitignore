@@ -5,6 +5,7 @@
 package-lock.json
 node_modules/*
 coverage/*
+build/*
 
 # Environment
 .env
