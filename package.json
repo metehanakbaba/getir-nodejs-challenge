@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/babel-node src/app.js",
+    "start": "./node_modules/.bin/babel-node src/app.js",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest",
     "server": "cross-env DEBUG=app nodemon --exec ./node_modules/.bin/babel-node src/app.js",
