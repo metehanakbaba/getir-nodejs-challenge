@@ -1,8 +1,10 @@
 import httpStatus from '../utils/httpStatus';
+import responseCode from '../utils/responseCode';
 
 const {
   OK, BAD_REQUEST, INTERNAL_SERVER_ERROR, NOT_FOUND
 } = httpStatus;
+const { SUCCESS, ERROR_SERVER, ERROR_VALIDATION, NOT_FOUND: NOT_FOUND_CODE } = responseCode
 
 const response = (res, status, code, msg, otherFields) => {
   const jsonOutput = { code, msg, ...otherFields };
@@ -10,13 +12,13 @@ const response = (res, status, code, msg, otherFields) => {
 };
 
 export const success = (res) => (entity) => {
-  response(res, OK, 0, 'Success', entity);
+  response(res, OK, SUCCESS, 'Success', entity);
 };
 
 // eslint-disable-next-line no-unused-vars
 export const serverErrorHandler = () => (err, req, res, next) => {
   response(
-    res, INTERNAL_SERVER_ERROR, 1,
+    res, INTERNAL_SERVER_ERROR, ERROR_SERVER,
     err.msg || err.message || 'Something went wrong',
     {
       error: err
@@ -26,7 +28,7 @@ export const serverErrorHandler = () => (err, req, res, next) => {
 
 export const notFoundHandler = () => (req, res) => {
   response(
-    res, NOT_FOUND, 2, 'Not found'
+    res, NOT_FOUND, NOT_FOUND_CODE, 'Not found'
   );
 };
 
@@ -37,7 +39,7 @@ export const validationErrorHandler = () => (err, req, res, next) => {
     response(
       res,
       BAD_REQUEST, // status
-      3, // code
+      ERROR_VALIDATION, // code
       message // message
     );
   }

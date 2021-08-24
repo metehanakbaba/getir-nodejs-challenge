@@ -17,8 +17,11 @@ const router = new Router();
  * @apiParam endDate Maximum value (exclusive) for 'createdAt' field of Record
  * @apiParam minCount Minimum value (inclusive) for sum of 'counts' field of Record
  * @apiParam maxCount Maximum value (exclusive) for sum of 'counts' field of Record
- * @apiSuccess {Object} record Record's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiSuccess {Array} records Record's data.
+ * @apiSuccess {String} msg Conditional message
+ * @apiSuccess {Number} code Success code [0]
+ * @apiError {String} msg Some parameters may contain invalid values.
+ * @apiError {Number} code Error code of Validation[3]
  */
 
 // routes
