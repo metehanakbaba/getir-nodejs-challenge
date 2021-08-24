@@ -4,7 +4,7 @@
     "clean": "rm -rf build && mkdir build",
     "build": "npm run clean && npm run build:babel",
     "build:babel": "babel -d ./build ./src -s",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "test": "cross-env NODE_ENV=test jest",
     "server": "cross-env DEBUG=app nodemon --exec ./node_modules/.bin/babel-node src/app.js",
     "server:prod": "cross-env NODE_ENV=production ./node_modules/.bin/nodemon --exec ./node_modules/.bin/babel-node src/app.js",
