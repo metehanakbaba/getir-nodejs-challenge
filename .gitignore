@@ -4,9 +4,10 @@
 # Node Package Manager
 package-lock.json
 node_modules/*
-
+coverage/*
 # Environment
 .env
 
 # Api documentation
 docs/*
+
