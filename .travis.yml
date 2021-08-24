@@ -15,7 +15,7 @@ script:
 before_install:
   - npm install -g codecov
 after_success:
-  - codecov --file coverage/lcov.info --disable search
+  -  codecov --disable=gco
 env:
   global:
     - CXX=g++-4.8
