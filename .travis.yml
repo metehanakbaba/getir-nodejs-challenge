@@ -13,7 +13,7 @@ addons:
 script:
   - npm test -- -i --coverage --ci
 before_install:
-  - npm install --user codecov
+  - npm install -g codecov
 after_success:
   - codecov --file coverage/lcov.info --disable search
 env:
