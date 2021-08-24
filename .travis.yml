@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - v14
+services:
+  - redis
 addons:
   apt:
     sources:
@@ -9,7 +11,11 @@ addons:
       - gcc-4.8
       - g++-4.8
 script:
-  - npm test -- -i --coverage
+  - npm test -- -i --coverage --ci
+before_install:
+  - npm install --user codecov
+after_success:
+  - codecov --file coverage/lcov.info --disable search
 env:
   global:
     - CXX=g++-4.8
