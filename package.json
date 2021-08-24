@@ -11,7 +11,9 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
