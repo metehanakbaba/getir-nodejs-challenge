@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npm run build && node ./build/index.js",
+    "start": "node ./build/index.js",
     "clean": "rm -rf build && mkdir build",
     "build": "npm run clean && npm run build:babel",
     "build:babel": "babel -d ./build ./src -s",
