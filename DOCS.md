@@ -46,5 +46,5 @@ POST /records
 | Name     | Type       | Description                           |
 |----------|------------|---------------------------------------|
 | msg | `String` | <p>Some parameters may contain invalid values.</p> |
-| code | `Number` | <p>401 Error code of Validation[3]</p> |
+| code | `Number` | <p>Error code of Validation[3]</p> |
 
