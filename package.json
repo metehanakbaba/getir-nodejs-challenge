@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node index.js",
+    "start": "npm-run-all server:prod",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest",
     "server": "cross-env DEBUG=app nodemon --exec babel-node src/app.js",
